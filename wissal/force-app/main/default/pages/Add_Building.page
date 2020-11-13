@@ -1,0 +1,110 @@
+<apex:page standardController="Building__c" extensions="AddUnitsController" lightningStyleSheets="true">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <apex:slds />
+        <body>
+            
+            <!--Badges-->
+            <section aria-labelledby="badges">
+                <h2 id="badges" class="slds-text-heading--large slds-m-vertical--large">Building</h2>
+                <div>
+                    
+                    <span class="slds-badge slds-theme--inverse">Add Buildings</span> <span class="slds-badge slds-theme--inverse">Add Units</span>
+                </div>
+            </section>
+            
+            <!--Message-->
+            <apex:pageMessages id="msg"/>
+            
+            <!--add buildings form-->
+            <apex:form >
+                <apex:pageBlock >
+                
+                    <apex:pageBlockSection title="Add Building">
+                        
+                       
+                        <apex:pageBlockSectionItem >
+                            Building Name:
+                            <apex:inputField value="{!building.Name}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        
+                        <apex:pageBlockSectionItem >
+                            Building Type:
+                            <apex:inputField value="{!building.Type__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        
+                        <apex:pageBlockSectionItem >
+                            Address:
+                            <apex:inputField value="{!building.Address__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        
+                        
+                        <apex:pageBlockSection >
+                            <apex:pageBlockSectionItem >
+                        <apex:commandButton action="{!SaveBuildings}" value="Save" reRender=""/>
+                        <apex:commandButton action="{!cancel}" value="Cancel"/>
+                                </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                        
+                    </apex:pageBlockSection>
+                    
+                    
+                    
+                    
+                    
+                </apex:pageBlock>
+                
+            </apex:form>
+            
+            <!--add units form-->
+            <apex:form >
+                <apex:pageBlock >
+                    
+                    <apex:message />  
+                    
+                    <apex:pageBlockSection title="Add Units">
+                        
+                        
+                        <apex:pageBlockSectionItem >
+                            Unit Name:
+                            <apex:inputField value="{!unit.name}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            Assign to Building:
+                            <apex:inputField value="{!unit.Building__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            Unit Status:
+                            <apex:inputField value="{!unit.Status__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            Unit Price:
+                            <apex:inputField value="{!unit.Price__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            Unit Type:
+                            <apex:inputField value="{!unit.Type__c}" />
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSection >
+                        <apex:pageBlockSectionItem >
+                            <apex:commandButton action="{!SaveUnits}" value="Save"/>
+                        <apex:commandButton action="{!cancel}" value="Cancel"/>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                    </apex:pageBlockSection>
+                     
+                </apex:pageBlock>
+            </apex:form>
+  
+        </body>
+        
+    </html>
+   
+</apex:page>

@@ -1,0 +1,48 @@
+<apex:page controller="searchContractsController" lightningStyleSheets="true">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            
+            <apex:slds />
+            <apex:stylesheet value="/resources/htdocs/css/basic.css"/>
+            <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        </head>
+        <body class='slds-scope'>
+            
+            <section aria-labelledby="badges">
+                <h2 id="badges" class="slds-text-heading--large slds-m-vertical--large">Search Contracts</h2>
+                <div>
+                    
+                    <span class="slds-badge slds-theme--inverse">By Buildings</span> 
+                    <span class="slds-badge slds-theme--inverse">By Venders</span>
+                </div>
+            </section>
+            
+            <apex:form >
+                
+                <apex:pageBlock id="Header">
+                    
+                    <apex:inputText value="{!searchString}" html-placeholder="Search Contracts by building name or vender name" 
+                                    id="theSearchString" maxlength="100" size="50"/> &nbsp;
+                    
+                    <apex:CommandButton Id="btnSearch" action="{!getContracts}"  rerender="ContractsBlock" value="Search" alt="Search" />
+                    
+                    
+                </apex:pageBlock>
+                
+                <apex:pageBlock id="ContractsBlock" title="Current Contracts">
+                    <apex:pageBlockTable value="{!contracts}" var="res">
+                        <apex:column headerValue="Contract Name" value="{!res.Name }" />            
+                        <apex:column headerValue="Status"  value="{!res.Status__c}"/>
+                        <apex:column headerValue="Description"  value="{!res.Description__c}"/>
+                        <apex:column headerValue="Term(Months)" value="{!res.Contract_Term_months__c}"/>
+                        <apex:column headerValue="Start Date" value="{!res.Start_Date__c}"/>
+                        <apex:column headerValue="End Date" value="{!res.End_Date__c}"/>
+                    </apex:pageBlockTable>
+                    
+                </apex:pageBlock>
+                
+            </apex:form>
+        
+        </body>
+    </html>
+</apex:page>
